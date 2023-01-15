@@ -1,4 +1,4 @@
-from functions import get_todos
+from functions import get_todos, write_todos
 import time
 
 todos = []
@@ -16,8 +16,7 @@ while True:
 
         todos.append(todo + "\n")
 
-        with open("files/todos.txt", "w") as file:
-            file.writelines(todos)
+        write_todos("files/todos.txt", todos)
 
     elif user_input.startswith("show"):
 
@@ -42,25 +41,24 @@ while True:
         editTodo = todos[number].strip("\n")
         print(f"{editTodo} has been replaced with {new_todo}")
         todos[number] = new_todo
-        with open("files/todos.txt", "w") as file:
-            file.writelines(todos)
+
+        write_todos("files/todos.txt", todos)
 
     elif user_input.startswith('complete'):
         completeNumber = int(input("Which number is completed: "))
 
-        with open("files/todos.txt", "r") as file:
-            todos = file.readlines()
+        todos = get_todos()
 
         index = completeNumber - 1
         removeTodo = todos[index].strip('\n')
         print(f"{removeTodo} has been completed and deleted")
         todos.pop(index)
-        with open("files/todos.txt", "w") as file:
-            file.writelines(todos)
+
+        write_todos("files/todos.txt", todos)
 
     else:
         print("Invalid Command")
 
-        break
+        user_input = (input('Please add, show, edit, complete, or exit '))
 
 print("Thank You For Using The ToDOList APP")
