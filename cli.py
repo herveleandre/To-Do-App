@@ -35,8 +35,8 @@ while True:
             print(f"{index + 1}-{item.capitalize()}")
 
     elif user_input.startswith("edit"):
-        number = int(input("Please enter a number to edit: "))
-        number = number - 1
+        todo = user_input[5:]
+        number = int(todo) - 1
         new_todo = input("Enter a new To DO: ") + "\n"
         editTodo = todos[number].strip("\n")
         print(f"{editTodo} has been replaced with {new_todo}")
