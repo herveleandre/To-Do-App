@@ -13,7 +13,7 @@ button2 = sg.FolderBrowse('Choose')
 compressButton = sg.Button('Compress')
 
 window = sg.Window('Files Compressor', layout=[[label1, input_box1, button1],
-                                               [label2, input_box2, button2],
+                                                [label2, input_box2, button2],
                                                [compressButton]])
 window.read()
 window.close()
